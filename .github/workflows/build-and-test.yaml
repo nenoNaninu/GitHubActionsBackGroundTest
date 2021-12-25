@@ -20,7 +20,9 @@ jobs:
           dotnet-version: ${{ env.DOTNET_VERSION }}
 
       - name: Run Server
-        run: RUNNER_TRACKING_ID="" && (dotnet run --project ./GitHubActionsBackGroundTest/GitHubActionsBackGroundTest.csproj &)
+        run: |
+          dotnet run --project ./GitHubActionsBackGroundTest/GitHubActionsBackGroundTest.csproj &
+          dotnet test ./TestProject1/TestProject1.csproj
 
-      - name: Test
-        run: dotnet test ./TestProject1/TestProject1.csproj
+      # - name: Test
+      #   run: dotnet test ./TestProject1/TestProject1.csproj
