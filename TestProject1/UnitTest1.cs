@@ -17,7 +17,7 @@ public class UnitTest1
     [Fact]
     public async Task Test1()
     {
-        var url = "https://localhost:7125/weatherforecast";
+        var url = "http://localhost:5125/weatherforecast";
 
         var client = new HttpClient();
 
