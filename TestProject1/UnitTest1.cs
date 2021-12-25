@@ -1,10 +1,19 @@
+using System;
 using System.Net.Http;
 using System.Threading.Tasks;
 using Xunit;
+using Xunit.Abstractions;
 
 namespace TestProject1;
 public class UnitTest1
 {
+    private readonly ITestOutputHelper _output;
+
+    public UnitTest1(ITestOutputHelper output)
+    {
+        _output = output;
+    }
+
     [Fact]
     public async Task Test1()
     {
@@ -17,8 +26,9 @@ public class UnitTest1
             var response = await client.GetAsync(url);
             Assert.True(response.IsSuccessStatusCode);
         }
-        catch
+        catch(Exception e)
         {
+            _output.WriteLine(e.Message);
             Assert.True(false);
         }
     }
